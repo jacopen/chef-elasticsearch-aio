@@ -5,6 +5,9 @@
 # Copyright 2013, Kazuto Kusama @jacopen
 #
 
+include_recipe "apt"
+include_recipe "td-agent"
+
 config = node[:es_with_fluentd]
 
 package "openjdk-7-jdk"

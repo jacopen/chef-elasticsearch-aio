@@ -1,12 +1,6 @@
 es = default[:es_with_fluentd]
 es[:es_base_url]       = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
 es[:es_deb_filename]   = "elasticsearch-0.90.7.deb"
-es[:cluster_name]      = "es_with_fluentd"
-es[:node_master]       = "true"
-es[:node_data]         = "true"
-es[:index_number_of_shards]    = "5"
-es[:index_number_of_replicas]  = "1"
-es[:gateway_type]         = "local"
 
 conf = es[:config]
 
@@ -72,3 +66,4 @@ conf = es[:config]
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:warn]  = "10s"
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:info]  = "5s"
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:debug] = "2s"
+
