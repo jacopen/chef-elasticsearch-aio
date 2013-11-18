@@ -1,7 +1,13 @@
 es = default[:es_with_fluentd]
 es[:es_base_url]              = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
 es[:es_deb_filename]          = "elasticsearch-0.90.7.deb"
-es[:nginx][:port]             = 28080
+
+es[:fluentd][:in_forward][:enabled] = "true"
+es[:fluentd][:in_forward][:port]    = "25224"
+es[:fluentd][:http][:enabled]       = "true"
+es[:fluentd][:http][:port]          = "8888"
+
+es[:nginx][:port]             = "28080"
 es[:nginx][:server_name]      = "elasticsearch.example.com"
 es[:elasticsearch_head][:git] = "https://github.com/mobz/elasticsearch-head.git"
 es[:kibana][:zip]             = "http://download.elasticsearch.org/kibana/kibana/kibana-latest.zip"
