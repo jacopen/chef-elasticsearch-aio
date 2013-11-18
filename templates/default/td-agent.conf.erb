@@ -1,0 +1,65 @@
+#####
+### Output descriptions:
+###
+#
+## This section matches events whose tag is td.DATABASE.TABLE
+#<match td.*.*>
+#  type tdlog
+#  apikey foo_bar
+#
+#  auto_create_table
+#  buffer_type file
+#  buffer_path /var/log/td-agent/buffer/td
+#</match>
+#
+### match tag=debug.** and dump to console
+#<match debug.**>
+#  type stdout
+#</match>
+#
+#####
+### Source descriptions:
+###
+#
+### built-in TCP input
+### @see http://docs.fluentd.org/articles/in_forward
+#<source>
+#  type forward
+#  port 24224
+#</source>
+#
+## HTTP input
+## POST http://localhost:8888/<tag>?json=<json>
+## POST http://localhost:8888/td.myapp.login?json={"user"%3A"me"}
+## @see http://docs.fluentd.org/articles/in_http
+#<source>
+#  type http
+#  port 8888
+#</source>
+#
+### live debugging agent
+#<source>
+#  type debug_agent
+#  bind 127.0.0.1
+#  port 24230
+#</source>
+
+<source>
+  type tail
+  format syslog
+  path /var/log/syslog
+  tag linux.syslog
+  pos_file /tmp/syslog.pos
+</source>
+ 
+<match *.*>
+  index_name fluentd
+  type_name fluentd
+  type elasticsearch
+  include_tag_key true
+  tag_key @log_name
+  host localhost
+  port 9200
+  logstash_format true
+  flush_interval 10s
+</match>
