@@ -7,9 +7,9 @@ class Hash
           arr << "#{key}.#{item}"
         end
       elsif value.class == String
-        arr << "#{key} = \"#{value}\""
+        arr << "#{key}: \"#{value}\""
       else
-        arr << "#{key} = #{value}"
+        arr << "#{key}: #{value}"
       end
     }
     arr
