@@ -39,7 +39,7 @@ git "/var/www/eh" do
 end
 
 template "/etc/elasticsearch/elasticsearch.yml" do
-  notifies :reload, "service[elasticsearch]"
+  notifies :restart, "service[elasticsearch]"
 end
 
 template "/etc/td-agent/td-agent.conf" do
@@ -66,7 +66,7 @@ file "/var/log/syslog" do
 end
 
 service "elasticsearch" do
-  supports [:restart, :reload]
+  supports [:restart]
   action :enable
 end
 
