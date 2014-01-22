@@ -1,0 +1,33 @@
+<% if node[:elasticsearch_aio][:td_agent][:in_forward][:enabled] == "true" %>
+<source>
+  type forward
+  port <%= node[:elasticsearch_aio][:td_agent][:in_forward][:port] %>
+</source>
+<% end %>
+
+<% if node[:elasticsearch_aio][:td_agent][:http][:enabled] == "true" %>
+<source>
+  type http
+  port <%= node[:elasticsearch_aio][:td_agent][:http][:port] %>
+</source>
+<% end %>
+
+<source>
+  type tail
+  format syslog
+  path /var/log/syslog
+  tag linux.syslog
+  pos_file /tmp/syslog.pos
+</source>
+ 
+<match *.*>
+  index_name fluentd
+  type_name fluentd
+  type elasticsearch
+  include_tag_key true
+  tag_key @log_name
+  host localhost
+  port 9200
+  logstash_format true
+  flush_interval 10s
+</match>

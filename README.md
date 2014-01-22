@@ -1,4 +1,4 @@
-es-with-fluentd Cookbook
+elasticsearch-aio Cookbook
 ========================
 
 Deploy elasticsearch with Kibana3 and Fluentd.

@@ -1,4 +1,4 @@
-<% config = node[:es_with_fluentd][:config] %>
+<% config = node[:elasticsearch_aio][:config] %>
 <% config.dot_chain.each do |item| %>
 <%= item %>
 <% end %>

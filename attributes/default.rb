@@ -1,17 +1,14 @@
-es = default[:es_with_fluentd]
+es = default[:elasticsearch_aio]
 es[:es_base_url]              = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
 es[:es_deb_filename]          = "elasticsearch-0.90.7.deb"
 
-es[:fluentd][:in_forward][:enabled] = "true"
-es[:fluentd][:in_forward][:port]    = "25224"
-es[:fluentd][:http][:enabled]       = "true"
-es[:fluentd][:http][:port]          = "8888"
+es[:td_agent][:in_forward][:enabled] = "true"
+es[:td_agent][:in_forward][:port]    = "25224"
+es[:td_agent][:http][:enabled]       = "true"
+es[:td_agent][:http][:port]          = "8888"
 
-es[:nginx][:port]             = "28080"
-es[:nginx][:server_name]      = "elasticsearch.example.com"
+es[:kibana][:port]             = "28080"
 es[:elasticsearch_head][:git] = "https://github.com/mobz/elasticsearch-head.git"
-es[:kibana][:zip]             = "http://download.elasticsearch.org/kibana/kibana/kibana-latest.zip"
-
 conf = es[:config]
 
 ## These attributes are export to elasticsearch.yml.
