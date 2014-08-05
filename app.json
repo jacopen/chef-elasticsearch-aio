@@ -1,0 +1,7 @@
+{
+  "name": "ElasticSearch All in One",
+  "description": "deploy elasticsearch and kibana",
+  "repository": "https://github.com/jacopen/chef-elasticsearch-aio",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["es", "chef"]
+}

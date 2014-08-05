@@ -5,13 +5,7 @@
 # Copyright 2013, Kazuto Kusama @jacopen
 #
 
-include_recipe "elasticsearch-aio::td-agent"
-
 config = node[:elasticsearch_aio]
-
-%w(openjdk-7-jdk git curl unzip).each do |pkg|
-  package pkg
-end
 
 remote_file "/tmp/#{config[:es_deb_filename]}" do
   source config[:es_base_url] + config[:es_deb_filename]
@@ -26,7 +20,19 @@ template "/etc/elasticsearch/elasticsearch.yml" do
   notifies :restart, "service[elasticsearch]"
 end
 
+bash "Install elasticsearch-head" do
+  code "/usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head"
+  user "root"
+  group "root"
+end
+
+bash "Install Kibana" do
+  code "/usr/share/elasticsearch/bin/plugin -url http://download.elasticsearch.org/kibana/kibana/kibana-latest.zip -install elasticsearch/kibana3"
+  user "root"
+  group "root"
+end
+
 service "elasticsearch" do
   supports [:restart]
-  action :enable
+  action [:enable, :start]
 end

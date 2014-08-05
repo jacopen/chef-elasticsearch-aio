@@ -1,16 +1,15 @@
 es = default[:elasticsearch_aio]
 es[:es_base_url]              = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
-es[:es_deb_filename]          = "elasticsearch-0.90.7.deb"
+es[:es_deb_filename]          = "elasticsearch-1.3.1.deb"
 
-es[:td_agent][:in_forward][:enabled] = "true"
-es[:td_agent][:in_forward][:port]    = "25224"
 es[:td_agent][:http][:enabled]       = "true"
 es[:td_agent][:http][:port]          = "8888"
+es[:td_agent][:syslog][:port]        = "15140"
+es[:rsyslog][:port]                  = "10010"
+es[:nginx][:port]                    = "80"
+es[:nginx][:sites_path]              = "/var/www"
 
-es[:kibana][:port]             = "28080"
-es[:elasticsearch_head][:git] = "https://github.com/mobz/elasticsearch-head.git"
 conf = es[:config]
-
 ## These attributes are export to elasticsearch.yml.
 ## e.g.
 ## conf[:cluster][:name] = "elasticsearch"
@@ -25,8 +24,8 @@ conf = es[:config]
 # conf[:node][:data]                     = true
 # conf[:node][:rack]                     = "rack314"
 # conf[:node][:max_local_storage_nodes]  = 1
-# conf[:index][:number_of_shards]        = 5
-# conf[:index][:number_of_replicas]      = 1
+conf[:index][:number_of_shards]        = 5
+conf[:index][:number_of_replicas]      = 0
 # conf[:path][:conf]                     = "/path/to/conf"
 # conf[:path][:data]                     = "/path/to/data"
 # conf[:path][:work]                     = "/path/to/work"
@@ -39,7 +38,7 @@ conf = es[:config]
 # conf[:network][:host]                  = "192.168.0.1"
 # conf[:transport][:tcp][:port]          = 9300
 # conf[:transport][:tcp][:compress]      = true
-# conf[:http][:port]                     = 9200
+conf[:http][:port]                     = 9200
 # conf[:http][:max_content_length]       = "100mb"
 # conf[:http][:enabled]                  = false
 # conf[:gateway][:type]                  = "local"
