@@ -13,5 +13,4 @@ recipe "elasticsearch-aio", "setup all in one"
 recipe "elasticsearch-aio::elasticsearch", "setup elasticsearch and plugins"
 recipe "elasticsearch-aio::td-agent", "setup td-agent and plugins"
 recipe "elasticsearch-aio::vcap", "config rsyslog for vcap components"
-recipe "elasticsearch-aio::tools", "setup elasticsearch-head and kibana"
 
