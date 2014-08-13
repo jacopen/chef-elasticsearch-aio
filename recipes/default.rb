@@ -5,7 +5,7 @@
 # Copyright 2013, Kazuto Kusama @jacopen
 #
 
-%w(openjdk-7-jdk git curl unzip libcurl3 libcurl3-gnutls libcurl4-openssl-dev libcurl4-gnutls-dev libcurl4-nss-dev).each do |pkg|
+%w(openjdk-7-jdk git curl unzip libcurl3 libcurl3-gnutls libcurl4-openssl-dev libcurl4-gnutls-dev libcurl4-nss-dev build-essential).each do |pkg|
   package pkg
 end
 
