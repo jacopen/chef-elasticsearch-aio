@@ -20,6 +20,20 @@ template "/etc/elasticsearch/elasticsearch.yml" do
   notifies :restart, "service[elasticsearch]"
 end
 
+bash "Uninstall elasticsearch-head" do
+  code "/usr/share/elasticsearch/bin/plugin -remove mobz/elasticsearch-head"
+  user "root"
+  group "root"
+  only_if "/usr/share/elasticsearch/bin/plugin --list | grep head"
+end
+
+bash "Uninstall Kibana" do
+  code "/usr/share/elasticsearch/bin/plugin -remove elasticsearch/kibana3"
+  user "root"
+  group "root"
+  only_if "/usr/share/elasticsearch/bin/plugin --list | grep kibana"
+end
+
 bash "Install elasticsearch-head" do
   code "/usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head"
   user "root"
