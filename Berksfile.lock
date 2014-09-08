@@ -2,6 +2,9 @@ DEPENDENCIES
   elasticsearch-aio
     path: .
     metadata: true
+  monit
+    git: git@github.com:jacopen/chef-monit.git
+    revision: fee09b59b75532bf6b93d1b3401ea8774f3e7f1d
   td-agent
     git: git@github.com:treasure-data/chef-td-agent.git
     revision: 2230c1bc627bb2e74cd854313ea9cddc2401026f
@@ -10,7 +13,9 @@ GRAPH
   apt (2.4.0)
   elasticsearch-aio (0.3.0)
     apt (>= 0.0.0)
+    monit (>= 0.0.0)
     td-agent (>= 0.0.0)
+  monit (1.0.2)
   td-agent (0.0.1)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
