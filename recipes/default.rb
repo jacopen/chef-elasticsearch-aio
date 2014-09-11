@@ -12,3 +12,4 @@ end
 include_recipe "elasticsearch-aio::td-agent"
 include_recipe "elasticsearch-aio::elasticsearch"
 include_recipe "elasticsearch-aio::vcap"
+include_recipe "elasticsearch-aio::monit"
