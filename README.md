@@ -39,3 +39,7 @@ Access http://<IP Addr>:9200/_plugin/head/
 
 ## Support platforms
 ubuntu 12.04
+
+## Notes
+- `elasticsearch-cloud-aws` plugin need to install a version matching your Elasticsearch version.<br/>
+see also: https://github.com/elasticsearch/elasticsearch-cloud-aws
