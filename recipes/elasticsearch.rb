@@ -66,6 +66,11 @@ bash "Install marvel" do
   user "root"
 end
 
+bash "Install elasticsearch-cloud-aws" do
+  code "/usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/#{config[:cloud_aws][:version]}"
+  user "root"
+end
+
 
 service "elasticsearch" do
   supports [:restart]
