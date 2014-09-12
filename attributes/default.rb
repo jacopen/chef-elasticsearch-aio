@@ -1,6 +1,7 @@
 es = default[:elasticsearch_aio]
 es[:es_base_url]              = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
 es[:es_deb_filename]          = "elasticsearch-1.3.1.deb"
+es[:cloud_aws][:version]      = "2.3.0"
 
 es[:td_agent][:http][:enabled]       = "true"
 es[:td_agent][:http][:port]          = "8888"
@@ -73,3 +74,6 @@ conf[:http][:port]                     = 9200
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:info]  = "5s"
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:debug] = "2s"
 
+# conf[:cloud][:aws][:access_key]    = "__AWS_ACCESS_KEY__"
+# conf[:cloud][:aws][:secret_key]    = "__AWS_SECRET_KEY__"
+# conf[:cloud][:aws][:s3][:endpoint] = "__AWS_S3_ENDPOINT__"
