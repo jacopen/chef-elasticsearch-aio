@@ -69,6 +69,7 @@ end
 bash "Install elasticsearch-cloud-aws" do
   code "/usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/#{config[:cloud_aws][:version]}"
   user "root"
+  not_if { File.exists?("/usr/share/elasticsearch/plugins/cloud-aws") }
 end
 
 
