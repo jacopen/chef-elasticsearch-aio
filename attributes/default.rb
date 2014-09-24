@@ -1,6 +1,7 @@
 es = default[:elasticsearch_aio]
 es[:es_base_url]              = "https://download.elasticsearch.org/elasticsearch/elasticsearch/"
 es[:es_deb_filename]          = "elasticsearch-1.3.1.deb"
+es[:cloud_aws][:version]      = "2.3.0"
 
 es[:td_agent][:http][:enabled]       = "true"
 es[:td_agent][:http][:port]          = "8888"
@@ -8,6 +9,40 @@ es[:td_agent][:syslog][:port]        = "15140"
 es[:rsyslog][:port]                  = "10010"
 es[:nginx][:port]                    = "80"
 es[:nginx][:sites_path]              = "/var/www"
+
+es[:snapshot][:user]                  = "vagrant"
+es[:snapshot][:host]                  = "localhost"
+es[:snapshot][:port]                  = 9200
+es[:snapshot][:bucket]                = "xxxxx"
+es[:snapshot][:repository]            = "my_backup_repository"
+es[:snapshot][:retry]                 = 30  # count
+es[:snapshot][:timeout]               = 300 # s
+
+es[:snapshot][:prefixes] = [ "logstash-", ".marvel-" ]
+
+es[:snapshot][:save_snapshot][:log]          = "$HOME/curator_save_snapshot.log"
+es[:snapshot][:save_snapshot][:older_than]   = 1 # days
+es[:snapshot][:save_snapshot][:minute]       = "1"
+es[:snapshot][:save_snapshot][:hour]         = "1"
+es[:snapshot][:save_snapshot][:day]          = "1"
+es[:snapshot][:save_snapshot][:month]        = "1"
+es[:snapshot][:save_snapshot][:weekday]      = "*"
+
+es[:snapshot][:delete_snapshot][:log]        = "$HOME/curator_delete_snapshot.log"
+es[:snapshot][:delete_snapshot][:older_than] = 90 # days
+es[:snapshot][:delete_snapshot][:minute]     = "2"
+es[:snapshot][:delete_snapshot][:hour]       = "2"
+es[:snapshot][:delete_snapshot][:day]        = "2"
+es[:snapshot][:delete_snapshot][:month]      = "2"
+es[:snapshot][:delete_snapshot][:weekday]    = "*"
+
+es[:snapshot][:delete_index][:log]           = "$HOME/curator_delete_index.log"
+es[:snapshot][:delete_index][:older_than]    = 7 # days
+es[:snapshot][:delete_index][:minute]        = "3"
+es[:snapshot][:delete_index][:hour]          = "3"
+es[:snapshot][:delete_index][:day]           = "3"
+es[:snapshot][:delete_index][:month]         = "3"
+es[:snapshot][:delete_index][:weekday]       = "*"
 
 conf = es[:config]
 ## These attributes are export to elasticsearch.yml.
@@ -73,3 +108,6 @@ conf[:http][:port]                     = 9200
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:info]  = "5s"
 # conf[:monitor][:jvm][:gc][:ConcurrentMarkSweep][:debug] = "2s"
 
+# conf[:cloud][:aws][:access_key]    = "__AWS_ACCESS_KEY__"
+# conf[:cloud][:aws][:secret_key]    = "__AWS_SECRET_KEY__"
+# conf[:cloud][:aws][:s3][:endpoint] = "__AWS_S3_ENDPOINT__"

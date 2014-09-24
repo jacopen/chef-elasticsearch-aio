@@ -5,18 +5,42 @@ DEPENDENCIES
   monit
     git: git@github.com:jacopen/chef-monit.git
     revision: fee09b59b75532bf6b93d1b3401ea8774f3e7f1d
+  pyenv
+    git: git@github.com:kei-yamazaki/chef-pyenv.git
+    revision: 9af51e61dc2dd1a9ee5379e662c91b3c0195ced3
   td-agent
     git: git@github.com:treasure-data/chef-td-agent.git
     revision: 2230c1bc627bb2e74cd854313ea9cddc2401026f
 
 GRAPH
   apt (2.4.0)
+  build-essential (2.0.6)
+  chef_handler (1.1.6)
+  dmg (2.2.0)
   elasticsearch-aio (0.3.0)
     apt (>= 0.0.0)
     monit (>= 0.0.0)
     td-agent (>= 0.0.0)
+  git (4.0.2)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    runit (>= 1.0.0)
+    windows (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
   monit (1.0.2)
+  pyenv (0.1.0)
+    apt (>= 0.0.0)
+    git (>= 0.0.0)
+  runit (1.5.10)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
   td-agent (0.0.1)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
+  windows (1.34.2)
+    chef_handler (>= 0.0.0)
   yum (3.2.2)
+  yum-epel (0.5.1)
+    yum (~> 3.0)

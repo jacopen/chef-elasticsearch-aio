@@ -17,5 +17,6 @@ suites:
   - name: default
     run_list:
       - recipe[apt]
+      - recipe[pyenv]
       - recipe[elasticsearch-aio::default]
     attributes:
