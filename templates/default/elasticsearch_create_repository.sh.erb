@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# create repository
+
+<% sp = node[:elasticsearch_aio][:snapshot] %>
+
+curl -s -XPUT '<%= sp[:host] %>:<%= sp[:port] %>/_snapshot/<%= sp[:repository] %>' -d '{
+  "type": "s3",
+  "settings": {
+      "bucket"      : "<%= sp[:bucket] %>",
+      "compress"    : true,
+      "max_retries" : <%= sp[:retry] %>
+  }
+}'
