@@ -14,11 +14,11 @@ es[:snapshot][:user]                  = "vagrant"
 es[:snapshot][:host]                  = "localhost"
 es[:snapshot][:port]                  = 9200
 es[:snapshot][:bucket]                = "xxxxx"
-es[:snapshot][:repository]            = "my_backup_repository"
+es[:snapshot][:repository]            = "elasticsearch_repository"
 es[:snapshot][:retry]                 = 30  # count
-es[:snapshot][:timeout]               = 300 # s
+es[:snapshot][:timeout]               = 3000 # s
 
-es[:snapshot][:prefixes] = [ "logstash-", ".marvel-" ]
+es[:snapshot][:prefixes] = [ "logstash-" ]
 
 es[:snapshot][:save_snapshot][:log]          = "$HOME/curator_save_snapshot.log"
 es[:snapshot][:save_snapshot][:older_than]   = 1 # days
